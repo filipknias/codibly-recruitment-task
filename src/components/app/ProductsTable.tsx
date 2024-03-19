@@ -6,7 +6,7 @@ type TProps = {
 
 export default function ProductsTable({ products }: TProps) {
     return (
-        <div className="bg-white rounded-lg">
+        <div className="bg-white rounded-lg mb-8">
             <div className="overflow-x-auto">
                 <div className="inline-block min-w-full overflow-hidden">
                     <table className="table-auto w-full">
