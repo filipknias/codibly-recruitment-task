@@ -15,6 +15,7 @@ export default function Pagination({ page, totalPages, onPrevClick, onNextClick 
                 className="rounded-tl-lg rounded-bl-lg px-4 py-2 text-lg font-semibold border-r border-gray-200 bg-white hover:bg-gray-100 transition duration-200 disabled:bg-black disabled:bg-opacity-10 disabled:text-gray-500"
                 disabled={!isPrevPage}
                 onClick={onPrevClick}
+                role="prev-button"
             >
                 Previous
             </button>
@@ -22,6 +23,7 @@ export default function Pagination({ page, totalPages, onPrevClick, onNextClick 
                 className="rounded-tr-lg rounded-br-lg px-4 py-2 text-lg font-semibold bg-white hover:bg-gray-100 transition duration-200 disabled:bg-black disabled:bg-opacity-10 disabled:text-gray-500"
                 disabled={!isNextPage}
                 onClick={onNextClick}
+                role="next-button"
             >
                 Next
             </button>
