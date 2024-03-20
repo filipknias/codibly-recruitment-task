@@ -9,6 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 
 export default function Home() {
     const [searchParams, setSearchParams] = useSearchParams();
+    const PRODUCTS_PER_PAGE = 5;
     const DEFAULT_PAGE = '1';
     const currentPage = searchParams.get("page") || DEFAULT_PAGE;
     const productId = searchParams.get("id") || null;
@@ -16,7 +17,7 @@ export default function Home() {
     const allProductsQuery = useQuery({ 
         queryKey: ['products', currentPage], 
         queryFn: () => {
-            return axios.get<TProductsResponse>(`https://reqres.in/api/products?per_page=5&page=${currentPage}`);
+            return axios.get<TProductsResponse>(`https://reqres.in/api/products?per_page=${PRODUCTS_PER_PAGE}&page=${currentPage}`);
         },
     });
 
@@ -50,15 +51,15 @@ export default function Home() {
     return (
         <ContentContainer>
             <Header />
-            {errorMessage ? (
-                <div className="mx-auto rounded-lg p-5 bg-red-200">
-                    <p className="text-red-500 text-center text-2xl">{errorMessage.message}</p>
+            {isLoading ? (
+                <div className="mx-auto rounded-lg p-5 bg-blue-200">
+                    <p className="text-blue-500 text-center text-2xl">Products data is loading...</p>
                 </div>
             ) : (
                 <>
-                    {isLoading ? (
-                        <div className="mx-auto rounded-lg p-5 bg-blue-200">
-                            <p className="text-blue-500 text-center text-2xl">Products data is loading...</p>
+                    {errorMessage ? (
+                        <div className="mx-auto rounded-lg p-5 bg-red-200">
+                            <p className="text-red-500 text-center text-2xl">{errorMessage.message}</p>
                         </div>
                     ) : (
                         <>

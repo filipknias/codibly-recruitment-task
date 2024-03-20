@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-
 export default function SearchProducts() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [id, setId] = useState<string>(() => {

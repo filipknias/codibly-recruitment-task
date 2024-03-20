@@ -28,7 +28,7 @@ export default function ProductsTable({ products }: TProps) {
                                     <tr 
                                         key={product.id} 
                                         style={{ backgroundColor: product.color }} 
-                                        className="cursor-pointer transition duration-200"
+                                        className="cursor-pointer"
                                         onClick={() => setOpenProduct(product)}
                                     >
                                         <td>
