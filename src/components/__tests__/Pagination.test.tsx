@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import { render } from '../../utils/testUtils';
 import Pagination from '../app/Pagination';
 
@@ -9,9 +8,9 @@ test('disable prev button on first page', async () => {
         onPrevClick: () => {},
         onNextClick: () => {},
     };
-    render(<Pagination {...paginationProps} />);
+    const { getByRole } = render(<Pagination {...paginationProps} />);
     
-    expect(screen.getByRole('prev-button')).toBeDisabled()
+    expect(getByRole('prev-button')).toBeDisabled()
 });
 
 test('disable next button on last page', async () => {
@@ -21,7 +20,7 @@ test('disable next button on last page', async () => {
         onPrevClick: () => {},
         onNextClick: () => {},
     };
-    render(<Pagination {...paginationProps} />);
+    const { getByRole } = render(<Pagination {...paginationProps} />);
     
-    expect(screen.getByRole('next-button')).toBeDisabled()
+    expect(getByRole('next-button')).toBeDisabled()
 });
