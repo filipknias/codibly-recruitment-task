@@ -10,7 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 export default function Home() {
     const [searchParams, setSearchParams] = useSearchParams();
     const PRODUCTS_PER_PAGE = 5;
-    const DEFAULT_PAGE = '1';
+    const DEFAULT_PAGE = 1;
     const currentPage = searchParams.get("page") || DEFAULT_PAGE;
     const productId = searchParams.get("id") || null;
 
@@ -28,7 +28,12 @@ export default function Home() {
             return [response.data.data];
         },
         enabled: !!productId,
-        retry: 0,
+        retry: (_, error) => {
+            if (error.message === "Request failed with status code 404") {
+                return false;
+            }
+            return true;
+        }
     });
 
     const isLoading = allProductsQuery.isLoading || productIdQuery.isLoading;
@@ -45,8 +50,6 @@ export default function Home() {
         const nextPage = allProductsQuery.data.data.page + 1;
         setSearchParams({ page: nextPage.toString() });
     };
-
-   
 
     return (
         <ContentContainer>
