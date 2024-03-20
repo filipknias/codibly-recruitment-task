@@ -29,11 +29,13 @@ export default function SearchProducts() {
                     className="flex-1 rounded-md border border-gray-200 px-4 py-2 focus:ring-4 ring-blue-200 transition duration-200 outline-none" 
                     placeholder="Product ID"
                     value={id}
-                    onChange={(e) => setId(e.target.value)} 
+                    onChange={(e) => setId(e.target.value)}
+                    role="id-number-input"
                 />
                 <button 
                     className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-200"
                     onClick={() => setId("")}
+                    role="clear-button"
                 >
                     Clear
                 </button>
