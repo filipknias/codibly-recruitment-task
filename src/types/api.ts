@@ -6,6 +6,14 @@ export type TProductsResponse = {
     };
 } & TPagination;
 
+export type TProductIdResponse = {
+    data: TProduct;
+    support: {
+        url: string;
+        text: string;
+    };
+};
+
 export type TProduct = {
     id: number;
     name: string;
